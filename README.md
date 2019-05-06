@@ -15,15 +15,15 @@ Typical Feature Toggles Library for Go.
 
 
 ### Register & Run
-- [ ] `Run(feat Feature, func() error) (err error)`
-- [ ] `RunFeature(name string, default bool, func() error)`
+- [ ] `Run(feat Feature, func() error) error`
+- [ ] `RunFeature(name string, defaultState bool, func()) error`
 
 ### Enabling/Disabling
 - [ ] `Enable(name string) error`
 - [ ] `Disable(name string) error`
 
 ### Misc
-- [ ] `listedFeatures() []Feature`: List of enabled features
+- [ ] `ListedFeatures() []Feature`: List of enabled features
 
 ### Recommendation
 
