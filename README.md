@@ -8,7 +8,7 @@ Typical Feature Toggles Library for Go.
 
 ## Usages
 
-### New Feature
+### Create Feature
 - [ ] `Name` string field
 - [ ] `DefaultState` boolean field
 - [ ] `State` boolean field
@@ -25,7 +25,11 @@ Typical Feature Toggles Library for Go.
 ### Misc
 - [ ] `ListedFeatures() []Feature`: List of enabled features
 
-### Recommendation
+## Example
+
+n/a
+
+## Recommendation
 
 - Puts enabling/disabling function in single part of code
 
