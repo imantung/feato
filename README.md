@@ -1,6 +1,6 @@
-# TYPFEAT
+# FEATO
 
-Typical Feature Toggles Library for Go.
+**Fea**-ture **To**-ggle Library for Go.
 
 - Global Access Instance (Singleton)
 - Dynamic Handler (Realtime update)

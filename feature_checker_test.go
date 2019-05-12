@@ -1,4 +1,4 @@
-package typfeat_test
+package feato_test
 
 import (
 	"testing"

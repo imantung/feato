@@ -1,4 +1,4 @@
-package typfeat
+package feato
 
 // Run Register the feature and run the function according if eligible
 func Run(feat Feature, runFunc func() error) (runnng bool, err error) {

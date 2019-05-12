@@ -1,4 +1,4 @@
-package typfeat
+package feato
 
 // FeatureChecker resposible to decide if toggle on or off
 type FeatureChecker struct {

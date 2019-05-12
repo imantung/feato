@@ -1,4 +1,4 @@
-package typfeat
+package feato
 
 const ()
 
