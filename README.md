@@ -15,15 +15,7 @@
 
 
 ### Register & Run
-- [ ] `Run(feat Feature, func() error) error`
-- [ ] `RunFeature(name string, defaultState bool, func()) error`
-
-### Enabling/Disabling
-- [ ] `Enable(name string) error`
-- [ ] `Disable(name string) error`
-
-### Misc
-- [ ] `ListedFeatures() []Feature`: List of enabled features
+- [ ] `Run(feat Feature, runFuncs ...func() error) error`
 
 ## Example
 

@@ -1,5 +1,5 @@
 package feato
 
 type ToggleRouter interface {
-	Route(Feature) int
+	Route(Feature) IndexToggle
 }

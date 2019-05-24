@@ -16,12 +16,12 @@ func NewNamelyToggleRouter() ToggleRouter {
 }
 
 // Route route feature to expected toggle
-func (r *NamelyToggleRouter) Route(feature Feature) int {
+func (r *NamelyToggleRouter) Route(feature Feature) IndexToggle {
 	if r.WhenEqual(feature) {
-		return 0
+		return EnableIndexToggle
 	}
 
-	return 1
+	return DisableIndexToggle
 }
 
 // WhenEqual compares feature with corresponding name to featureMap
