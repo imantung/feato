@@ -1,6 +1,8 @@
 package feato
 
-const ()
+const (
+	ErrOutOfRunFunctionsIndex = Error("Out of run functions index")
+)
 
 // Error model
 type Error string
