@@ -17,17 +17,17 @@ func NewNamelyToggleRouter() *NamelyToggleRouter {
 }
 
 // Route route feature to expected toggle
-func (r *NamelyToggleRouter) Route(feature Feature) IndexToggle {
+func (r *NamelyToggleRouter) Route(feature *Feature) IndexToggle {
 	state, ok := r.featureMap[feature.Name]
 	if !ok {
-		return feature.DefaultState
+		return feature.DefaultIndexToggle
 	}
 
 	return state
 }
 
-// SetState sets state of feature with corresponding name
-func (r *NamelyToggleRouter) SetState(name string, state IndexToggle) {
+// SetIndexToggle sets state of feature with corresponding name
+func (r *NamelyToggleRouter) SetIndexToggle(name string, state IndexToggle) {
 	r.mutex.Lock()
 	r.featureMap[name] = state
 	r.mutex.Unlock()
