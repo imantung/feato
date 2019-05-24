@@ -1,8 +1,8 @@
 package feato
 
 const (
-	EnableIndexToggle  = 0
-	DisableIndexToggle = 1
+	EnableIndexToggle  IndexToggle = 0
+	DisableIndexToggle IndexToggle = 1
 )
 
 type IndexToggle int

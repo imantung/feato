@@ -2,30 +2,22 @@ package feato
 
 import "sync"
 
+// NamelyToggleRouter Simple toggle router based on feature name
 type NamelyToggleRouter struct {
-	featureMap map[string]bool
+	featureMap map[string]IndexToggle
 	mutex      *sync.Mutex
 }
 
 // NewNamelyToggleRouter return new instance of NamelyToggleRouter
-func NewNamelyToggleRouter() ToggleRouter {
+func NewNamelyToggleRouter() *NamelyToggleRouter {
 	return &NamelyToggleRouter{
-		featureMap: make(map[string]bool),
+		featureMap: make(map[string]IndexToggle),
 		mutex:      &sync.Mutex{},
 	}
 }
 
 // Route route feature to expected toggle
 func (r *NamelyToggleRouter) Route(feature Feature) IndexToggle {
-	if r.WhenEqual(feature) {
-		return EnableIndexToggle
-	}
-
-	return DisableIndexToggle
-}
-
-// WhenEqual compares feature with corresponding name to featureMap
-func (r *NamelyToggleRouter) WhenEqual(feature Feature) bool {
 	state, ok := r.featureMap[feature.Name]
 	if !ok {
 		return feature.DefaultState
@@ -35,13 +27,8 @@ func (r *NamelyToggleRouter) WhenEqual(feature Feature) bool {
 }
 
 // SetState sets state of feature with corresponding name
-func (r *NamelyToggleRouter) SetState(name string, state bool) {
+func (r *NamelyToggleRouter) SetState(name string, state IndexToggle) {
 	r.mutex.Lock()
 	r.featureMap[name] = state
 	r.mutex.Unlock()
-}
-
-// GetState gets the state of feature with corresponding name
-func (r *NamelyToggleRouter) GetState(name string) bool {
-	return r.featureMap[name]
 }
