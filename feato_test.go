@@ -16,23 +16,25 @@ func TestManager(t *testing.T) {
 
 	t.Run("GIVEN route return enable", func(t *testing.T) {
 		toggleRouter.EXPECT().Route(gomock.Any()).Return(feato.EnableIndexToggle)
-		err := feato.Run(feato.NewUniqueFeature(), func() error {
+		ok, err := feato.Run(feato.NewUniqueFeature(), func() error {
 			return fmt.Errorf("error-but-enable")
 		})
+		require.True(t, ok)
 		require.EqualError(t, err, "error-but-enable")
 	})
 
 	t.Run("GIVEN route return disable", func(t *testing.T) {
 		t.Run("WHEN no disable run function", func(t *testing.T) {
 			toggleRouter.EXPECT().Route(gomock.Any()).Return(feato.DisableIndexToggle)
-			err := feato.Run(feato.NewUniqueFeature(), func() error {
-				return fmt.Errorf("error-but-enable")
+			ok, err := feato.Run(feato.NewUniqueFeature(), func() error {
+				return nil
 			})
-			require.EqualError(t, err, string(feato.ErrOutOfRunFunctionsIndex))
+			require.NoError(t, err)
+			require.False(t, ok)
 		})
 		t.Run("When disable run function available", func(t *testing.T) {
 			toggleRouter.EXPECT().Route(gomock.Any()).Return(feato.DisableIndexToggle)
-			err := feato.Run(
+			ok, err := feato.Run(
 				feato.NewUniqueFeature(),
 				func() error {
 					return fmt.Errorf("error-but-enable")
@@ -41,9 +43,9 @@ func TestManager(t *testing.T) {
 					return fmt.Errorf("error-but-disable")
 				},
 			)
+			require.True(t, ok)
 			require.EqualError(t, err, "error-but-disable")
 		})
-
 	})
 
 }

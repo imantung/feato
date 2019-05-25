@@ -9,6 +9,6 @@ func SetToggleRouter(toggleRouter ToggleRouter) {
 }
 
 // Run function according feature
-func Run(feature *Feature, runFuncs ...RunFunc) error {
+func Run(feature *Feature, runFuncs ...RunFunc) (bool, error) {
 	return Instance.Run(feature, runFuncs...)
 }
