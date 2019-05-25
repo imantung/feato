@@ -28,17 +28,15 @@ func TestSimpleToggleRouter_Route(t *testing.T) {
 	})
 
 	t.Run("GIVEN feature is enable", func(t *testing.T) {
-		toggleRouter.Enable("feature3")
-		require.Equal(t,
-			feato.EnableIndexToggle,
-			toggleRouter.Route(feato.NewFeature("feature3")))
+		feature3 := feato.NewFeature("feature3")
+		toggleRouter.Enable(feature3)
+		require.Equal(t, feato.EnableIndexToggle, toggleRouter.Route(feature3))
 	})
 
 	t.Run("GIVEN feature is disable", func(t *testing.T) {
-		toggleRouter.Disable("feature4")
-		require.Equal(t,
-			feato.DisableIndexToggle,
-			toggleRouter.Route(feato.NewFeature("feature4")))
+		feature4 := feato.NewFeature("feature4")
+		toggleRouter.Disable(feature4)
+		require.Equal(t, feato.DisableIndexToggle, toggleRouter.Route(feature4))
 	})
 
 }

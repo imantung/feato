@@ -27,20 +27,25 @@ func (r *SimpleToggleRouter) Route(feature *Feature) IndexToggle {
 }
 
 // SetIndexToggle sets state of feature with corresponding name
-func (r *SimpleToggleRouter) SetIndexToggle(name string, state IndexToggle) *SimpleToggleRouter {
+func (r *SimpleToggleRouter) SetIndexToggle(name string, index IndexToggle) *SimpleToggleRouter {
 	r.mutex.Lock()
-	r.featureMap[name] = state
+	r.featureMap[name] = index
 	r.mutex.Unlock()
 
 	return r
 }
 
-// Enable enable feature by name
-func (r *SimpleToggleRouter) Enable(name string) *SimpleToggleRouter {
-	return r.SetIndexToggle(name, EnableIndexToggle)
+// SetFeature set feature index toggle
+func (r *SimpleToggleRouter) SetFeature(feature *Feature, index IndexToggle) *SimpleToggleRouter {
+	return r.SetIndexToggle(feature.Name, index)
 }
 
-// Disable disable feature by name
-func (r *SimpleToggleRouter) Disable(name string) *SimpleToggleRouter {
-	return r.SetIndexToggle(name, DisableIndexToggle)
+// Enable enable feature
+func (r *SimpleToggleRouter) Enable(feature *Feature) *SimpleToggleRouter {
+	return r.SetFeature(feature, EnableIndexToggle)
+}
+
+// Disable disable feature
+func (r *SimpleToggleRouter) Disable(feature *Feature) *SimpleToggleRouter {
+	return r.SetFeature(feature, DisableIndexToggle)
 }
