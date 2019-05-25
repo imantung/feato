@@ -7,12 +7,12 @@ import (
 	"github.com/typical-go/feato"
 )
 
-func TestNamelyToggleRouter_ImplementationOfToggleRouter(t *testing.T) {
-	var _ feato.ToggleRouter = (*feato.NamelyToggleRouter)(nil)
+func TestSimpleToggleRouter_ImplementationOfToggleRouter(t *testing.T) {
+	var _ feato.ToggleRouter = (*feato.SimpleToggleRouter)(nil)
 }
 
-func TestNamelyToggleRouter_Route(t *testing.T) {
-	toggleRouter := feato.NewNamelyToggleRouter()
+func TestSimpleToggleRouter_Route(t *testing.T) {
+	toggleRouter := feato.NewSimpleToggleRouter()
 
 	t.Run("GIVEN feature map is not set", func(t *testing.T) {
 		t.Run("WHEN default index toggle is disable", func(t *testing.T) {
@@ -28,14 +28,14 @@ func TestNamelyToggleRouter_Route(t *testing.T) {
 	})
 
 	t.Run("GIVEN feature is enable", func(t *testing.T) {
-		toggleRouter.SetIndexToggle("feature3", feato.EnableIndexToggle)
+		toggleRouter.Enable("feature3")
 		require.Equal(t,
 			feato.EnableIndexToggle,
 			toggleRouter.Route(feato.NewFeature("feature3")))
 	})
 
 	t.Run("GIVEN feature is disable", func(t *testing.T) {
-		toggleRouter.SetIndexToggle("feature4", feato.DisableIndexToggle)
+		toggleRouter.Disable("feature4")
 		require.Equal(t,
 			feato.DisableIndexToggle,
 			toggleRouter.Route(feato.NewFeature("feature4")))
