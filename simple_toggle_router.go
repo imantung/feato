@@ -18,7 +18,7 @@ func NewSimpleToggleRouter() *SimpleToggleRouter {
 
 // Route route feature to expected toggle
 func (r *SimpleToggleRouter) Route(feature *Feature) IndexToggle {
-	state, ok := r.featureMap[feature.Name]
+	state, ok := r.featureMap[feature.ID]
 	if !ok {
 		return feature.DefaultIndexToggle
 	}
@@ -27,9 +27,9 @@ func (r *SimpleToggleRouter) Route(feature *Feature) IndexToggle {
 }
 
 // SetIndexToggle sets state of feature with corresponding name
-func (r *SimpleToggleRouter) SetIndexToggle(name string, index IndexToggle) *SimpleToggleRouter {
+func (r *SimpleToggleRouter) SetIndexToggle(id string, index IndexToggle) *SimpleToggleRouter {
 	r.mutex.Lock()
-	r.featureMap[name] = index
+	r.featureMap[id] = index
 	r.mutex.Unlock()
 
 	return r
@@ -37,7 +37,7 @@ func (r *SimpleToggleRouter) SetIndexToggle(name string, index IndexToggle) *Sim
 
 // SetFeature set feature index toggle
 func (r *SimpleToggleRouter) SetFeature(feature *Feature, index IndexToggle) *SimpleToggleRouter {
-	return r.SetIndexToggle(feature.Name, index)
+	return r.SetIndexToggle(feature.ID, index)
 }
 
 // Enable enable feature
