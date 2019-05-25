@@ -1,14 +1,12 @@
-# FEATO
+package main
 
-**Fea**-ture **To**-ggle Library for Go.
+import (
+	"fmt"
+	"log"
 
-- Global Access Instance (Singleton)
-- Dynamic Handler (Realtime update)
-- Avoid condition (No `if` statement)
+	"github.com/typical-go/feato"
+)
 
-## Example
-
-```go
 var (
 	// feature with specific ID
 	featureHelloWorld = feato.NewFeature("hello-world")
@@ -60,20 +58,18 @@ func runFeature3() error {
 
 	return err
 }
-```
 
-## What's next?
+func feature1Func() error {
+	fmt.Println("Feature 1 ")
+	return nil
+}
 
-- [ ] Nested feature
-- [ ] `tags` or `namespace` to categorize features and enabling/disabling by it 
-- [ ] Get data from Environment Variable
-- [ ] Get data from embedded database - [bbolt](https://github.com/etcd-io/bbolt) as feature storage 
-- [ ] Get data from external service integration e.g [flagr](https://github.com/checkr/flagr) as feature storage
-- [ ] AB Testing Feature Type
-- [ ] User Target Feature Type
+func feature1AlternativeFunc() error {
+	fmt.Println("Feature 1 - Alternative")
+	return nil
+}
 
-
-## References
-
-- <https://medium.com/@dehora/feature-flags-smaller-better-faster-software-development-f2eab58df0f9>
-- <https://martinfowler.com/articles/feature-toggles.html>
+func feature2Func() error {
+	fmt.Println("Feature 2")
+	return nil
+}
