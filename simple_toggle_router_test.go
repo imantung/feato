@@ -18,12 +18,12 @@ func TestSimpleToggleRouter_Route(t *testing.T) {
 		t.Run("WHEN default index toggle is disable", func(t *testing.T) {
 			require.Equal(t,
 				feato.DisableIndexToggle,
-				toggleRouter.Route(&feato.Feature{DefaultIndexToggle: feato.DisableIndexToggle}))
+				toggleRouter.Route(feato.NewUniqueFeature()))
 		})
 		t.Run("WHEN default index toggle is enable", func(t *testing.T) {
 			require.Equal(t,
 				feato.EnableIndexToggle,
-				toggleRouter.Route(&feato.Feature{DefaultIndexToggle: feato.EnableIndexToggle}))
+				toggleRouter.Route(feato.NewUniqueFeature().EnableByDefault()))
 		})
 	})
 
