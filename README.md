@@ -2,49 +2,60 @@
 
 **Fea**-ture **To**-ggle Library for Go.
 
-- Global Access Instance (Singleton)
-- Dynamic Handler (Realtime update)
 - Avoid condition (No `if` statement)
+- No need to initiation (Singleton), but still accommodate it.
+- Flexible with Adapter Pattern
 
-## Example
+
+## Usage
+
+### Feature Definition 
+```go
+// feature with specific ID
+featureHelloWorld = feato.NewFeature("hello-world")
+
+// feature with unique random ID 
+feature1 = feato.NewUniqueFeature()
+
+// feature is enable by default
+feature2 = feato.NewUniqueFeature().EnableByDefault()
+
+// feature have specific index toggle to route to
+feature3 = feato.NewUniqueFeature().SetDefaultIndexToggle(feato.DisableIndexToggle)
+```
+
+### Enable/Disable Feature 
+```go
+
+// Set ToggleRouter to define which is enable
+feato.SetToggleRouter(feato.NewSimpleToggleRouter().
+	SetIndexToggle("hello-world", feato.EnableIndexToggle).
+	Enable(feature1).
+	Disable(feature2).
+	SetFeature(feature3, feato.EnableIndexToggle))
+```
+
+### Run feature function
+```go
+feato.Run(featureHelloWorld, func() (err error) {
+	fmt.Println("Hello World")
+	return
+})
+feato.Run(feature1, feature1Func, feature1AlternativeFunc)
+```
+
+### Check if feature function is being executed
 
 ```go
-var (
-	// feature with specific ID
-	featureHelloWorld = feato.NewFeature("hello-world")
-
-	// unique feature
-	feature1 = feato.NewUniqueFeature()
-
-	// feature is enable by default
-	feature2 = feato.NewUniqueFeature().EnableByDefault()
-
-	// feature have specific index toggle to route to
-	feature3 = feato.NewUniqueFeature().SetDefaultIndexToggle(feato.DisableIndexToggle)
-)
-
-func init() {
-	// Set ToggleRouter to define which is enable
-	feato.SetToggleRouter(feato.NewSimpleToggleRouter().
-		SetIndexToggle("hello-world", feato.EnableIndexToggle).
-		Enable(feature1).
-		Disable(feature2).
-		SetFeature(feature3, feato.EnableIndexToggle))
+ok, _ := feato.Run(feature2, feature2Func)
+if !ok {
+	log.Println("Feature2 is not running")
 }
+```
 
-func main() {
-	feato.Run(featureHelloWorld, func() (err error) {
-		fmt.Println("Hello World")
-		return
-	})
-	feato.Run(feature1, feature1Func, feature1AlternativeFunc)
-
-	// ok is identify if function run
-	ok, _ := feato.Run(feature2, feature2Func)
-	if !ok {
-		log.Println("Feature2 is not running")
-	}
-
+### Error handling
+```go
+func main()
 	log.Println(runFeature3())
 }
 
