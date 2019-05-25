@@ -49,7 +49,7 @@ func main() {
 func runFeature3() error {
 	_, err := feato.Run(feature3,
 		func() error {
-			// By pass error to caller
+			// Pass error to caller
 			return fmt.Errorf("something error on feature 3")
 		},
 		func() error {
