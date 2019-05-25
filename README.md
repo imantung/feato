@@ -1,11 +1,14 @@
 # FEATO
 
+[![GoDoc](https://godoc.org/github.com/typical-go/feato?status.svg)](https://godoc.org/github.com/typical-go/feato)
+[![Coverage](http://gocover.io/_badge/github.com/typical-go/feato)](https://gocover.io/github.com/typical-go/feato)
+[![Go Report Card](https://goreportcard.com/badge/github.com/typical-go/feato)](https://goreportcard.com/report/github.com/typical-go/feato)
+
 **Fea**-ture **To**-ggle Library for Go.
 
 - Avoid condition (No `if` statement)
 - No need to initiation (Singleton), but still accommodate it.
 - Flexible with Adapter Pattern
-
 
 ## Usage
 
