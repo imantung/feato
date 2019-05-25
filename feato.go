@@ -1,7 +1,7 @@
 package feato
 
 // Instance instance of feature manager
-var Instance Manager
+var Instance FeatureManager
 
 // SetToggleRouter set toggle router
 func SetToggleRouter(toggleRouter ToggleRouter) {
