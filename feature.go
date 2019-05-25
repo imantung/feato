@@ -8,13 +8,13 @@ type Feature struct {
 	DefaultIndexToggle IndexToggle `json:"default_index_toggle"`
 }
 
-// NewFeature return new instance of Feature with random unique ID
-func NewFeature() *Feature {
-	return NewFeatureWithID(xid.New().String())
+// NewUniqueFeature return new instance of Feature with random unique ID
+func NewUniqueFeature() *Feature {
+	return NewFeature(xid.New().String())
 }
 
-// NewFeatureWithID return new instance of Feature with specific ID
-func NewFeatureWithID(id string) *Feature {
+// NewFeature return new instance of Feature with specific ID
+func NewFeature(id string) *Feature {
 	return &Feature{
 		ID:                 id,
 		DefaultIndexToggle: DisableIndexToggle,
