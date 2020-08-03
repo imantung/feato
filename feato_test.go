@@ -5,8 +5,8 @@ import (
 	"testing"
 
 	"github.com/golang/mock/gomock"
+	"github.com/imantung/feato"
 	"github.com/stretchr/testify/require"
-	"github.com/typical-go/feato"
 )
 
 func TestManager(t *testing.T) {

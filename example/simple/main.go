@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/typical-go/feato"
+	"github.com/imantung/feato"
 )
 
 var (

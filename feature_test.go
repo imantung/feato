@@ -4,7 +4,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/require"
-	"github.com/typical-go/feato"
+	"github.com/imantung/feato"
 )
 
 func TestFeature_New(t *testing.T) {

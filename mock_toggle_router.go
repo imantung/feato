@@ -5,9 +5,8 @@
 package feato
 
 import (
-	reflect "reflect"
-
 	gomock "github.com/golang/mock/gomock"
+	reflect "reflect"
 )
 
 // MockToggleRouter is a mock of ToggleRouter interface
