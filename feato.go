@@ -6,8 +6,20 @@ type (
 	// FlagStore interface for flag storage
 	FlagStore interface {
 		Put(key string, flag Flag)
+		IsEnabled(name string) bool
+		ClearAll()
 	}
 )
+
+var (
+	// Instance for global use
+	Instance FlagStore = make(FlagMap, 0)
+)
+
+// RegisterGlobal register features to global instance
+func RegisterGlobal(features []*Feature) {
+	Register(Instance, features)
+}
 
 // Register the features to store
 func Register(store FlagStore, features []*Feature) {
@@ -23,6 +35,11 @@ func registerChild(store FlagStore, parent string, childs []*Feature) {
 		store.Put(key, child.Flag)
 		registerChild(store, key, child.Childs)
 	}
+}
+
+// IsEnabled return flag by name
+func IsEnabled(name string) bool {
+	return Instance.IsEnabled(name)
 }
 
 // Bool convert flag to bool

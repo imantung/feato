@@ -38,3 +38,10 @@ func (m FlagMap) IsEnabled(key string) bool {
 	}
 	return Bool(m[key])
 }
+
+// ClearAll clear all feature
+func (m FlagMap) ClearAll() {
+	for k := range m {
+		delete(m, k)
+	}
+}
