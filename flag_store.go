@@ -50,3 +50,19 @@ func (s FlagStore) Put(key string, flag Flag) {
 		s[key] = flag
 	}
 }
+
+// IsEnabled return key flag
+func (s FlagStore) IsEnabled(key string) bool {
+	if _, ok := s[key]; !ok {
+		return false
+	}
+	return Bool(s[key])
+}
+
+// Bool convert flag to bool
+func Bool(f Flag) bool {
+	if f == nil {
+		return false
+	}
+	return *f
+}

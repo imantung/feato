@@ -33,3 +33,16 @@ func TestFeatureStore_Put(t *testing.T) {
 	}, store)
 
 }
+
+func TestFeatureStore_IsEnabled(t *testing.T) {
+	store := feato.FlagStore{
+		"name01": feato.Enabled,
+		"name02": feato.Disabled,
+		"name03": nil,
+	}
+
+	require.True(t, store.IsEnabled("name01"))
+	require.False(t, store.IsEnabled("name02"))
+	require.False(t, store.IsEnabled("name03"))
+	require.False(t, store.IsEnabled("not-found"))
+}
