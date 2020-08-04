@@ -9,39 +9,39 @@ import (
 	reflect "reflect"
 )
 
-// MockToggleRouter is a mock of ToggleRouter interface
-type MockToggleRouter struct {
+// MockRouter is a mock of Router interface
+type MockRouter struct {
 	ctrl     *gomock.Controller
-	recorder *MockToggleRouterMockRecorder
+	recorder *MockRouterMockRecorder
 }
 
-// MockToggleRouterMockRecorder is the mock recorder for MockToggleRouter
-type MockToggleRouterMockRecorder struct {
-	mock *MockToggleRouter
+// MockRouterMockRecorder is the mock recorder for MockRouter
+type MockRouterMockRecorder struct {
+	mock *MockRouter
 }
 
-// NewMockToggleRouter creates a new mock instance
-func NewMockToggleRouter(ctrl *gomock.Controller) *MockToggleRouter {
-	mock := &MockToggleRouter{ctrl: ctrl}
-	mock.recorder = &MockToggleRouterMockRecorder{mock}
+// NewMockRouter creates a new mock instance
+func NewMockRouter(ctrl *gomock.Controller) *MockRouter {
+	mock := &MockRouter{ctrl: ctrl}
+	mock.recorder = &MockRouterMockRecorder{mock}
 	return mock
 }
 
 // EXPECT returns an object that allows the caller to indicate expected use
-func (m *MockToggleRouter) EXPECT() *MockToggleRouterMockRecorder {
+func (m *MockRouter) EXPECT() *MockRouterMockRecorder {
 	return m.recorder
 }
 
 // Route mocks base method
-func (m *MockToggleRouter) Route(arg0 *Feature) IndexToggle {
+func (m *MockRouter) Route(arg0 *Feature) Index {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "Route", arg0)
-	ret0, _ := ret[0].(IndexToggle)
+	ret0, _ := ret[0].(Index)
 	return ret0
 }
 
 // Route indicates an expected call of Route
-func (mr *MockToggleRouterMockRecorder) Route(arg0 interface{}) *gomock.Call {
+func (mr *MockRouterMockRecorder) Route(arg0 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Route", reflect.TypeOf((*MockToggleRouter)(nil).Route), arg0)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Route", reflect.TypeOf((*MockRouter)(nil).Route), arg0)
 }

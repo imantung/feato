@@ -4,7 +4,7 @@ package feato
 var Instance FeatureManager
 
 // SetToggleRouter set toggle router
-func SetToggleRouter(toggleRouter ToggleRouter) {
+func SetToggleRouter(toggleRouter Router) {
 	Instance.ToggleRouter = toggleRouter
 }
 

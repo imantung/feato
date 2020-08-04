@@ -1,7 +1,7 @@
 package feato
 
 type FeatureManager struct {
-	ToggleRouter ToggleRouter
+	ToggleRouter Router
 }
 
 type RunFunc func() error
