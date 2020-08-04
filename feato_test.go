@@ -7,9 +7,9 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func TestFeatureStore_Put(t *testing.T) {
-	store := make(feato.FlagStore, 0)
-	store.Register([]*feato.Feature{
+func TestRegister(t *testing.T) {
+	store := make(feato.FlagMap, 0)
+	feato.Register(store, []*feato.Feature{
 		{Name: "name01", Flag: feato.Enabled},
 		{Name: "name02", Flag: feato.Disabled},
 		{Name: "group01", Childs: []*feato.Feature{
@@ -22,7 +22,7 @@ func TestFeatureStore_Put(t *testing.T) {
 		}},
 	})
 
-	require.Equal(t, feato.FlagStore{
+	require.Equal(t, feato.FlagMap{
 		"name01":               feato.Enabled,
 		"name02":               feato.Disabled,
 		"group01.name03":       feato.Enabled,
@@ -32,17 +32,4 @@ func TestFeatureStore_Put(t *testing.T) {
 		"group01.sub01.name06": feato.Disabled,
 	}, store)
 
-}
-
-func TestFeatureStore_IsEnabled(t *testing.T) {
-	store := feato.FlagStore{
-		"name01": feato.Enabled,
-		"name02": feato.Disabled,
-		"name03": nil,
-	}
-
-	require.True(t, store.IsEnabled("name01"))
-	require.False(t, store.IsEnabled("name02"))
-	require.False(t, store.IsEnabled("name03"))
-	require.False(t, store.IsEnabled("not-found"))
 }

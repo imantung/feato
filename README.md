@@ -3,11 +3,10 @@
 
 # FEATO
 
-**Fea**ture **To**ggle Library for Go.
+**Fea**ture **To**ggle Library for Go. 
 
 - [Simplest possible feature toggle](https://www.thoughtworks.com/radar/techniques?blipid=202005002)
-- Nested Feature
-- Avoid condition statement (No `if`)
+- Nested Features
 - JSON Friendly
 
 
