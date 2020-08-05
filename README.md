@@ -1,4 +1,3 @@
-[![Coverage](http://gocover.io/_badge/github.com/imantung/feato)](https://gocover.io/github.com/imantung/feato)
 [![Go Report Card](https://goreportcard.com/badge/github.com/imantung/feato)](https://goreportcard.com/report/github.com/imantung/feato)
 
 # feato
